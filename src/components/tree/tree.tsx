@@ -8,12 +8,12 @@ import './tree.scss';
 export type TreeProps = StyleProps & {
   content: FileType;
   size?: 'narrow' | 'normal' | 'wide';
-  readonly? : boolean;
+  dnd? : boolean;
 }
 
 const DEFAULT_PROPS = {
   size: 'normal',
-  readonly: true
+  dnd: false
 }
 
 const ROOT = makeRootClassName('tree');

@@ -24,6 +24,7 @@ const elem = makeClassNameFactory(ROOT);
 export const FolderNode = forwardRef<HTMLDivElement, FolderNodeProps>((props, ref) => {
   const realProps = { ...DEFAULT_PROPS, ...props };
   const { content, className, folderOpenIcon, folderIcon } = realProps;
+
   const [collapsed, setCollapsed] = useState(false);
 
   const handleToggle = () => setCollapsed(prev => !prev);
@@ -39,7 +40,7 @@ export const FolderNode = forwardRef<HTMLDivElement, FolderNodeProps>((props, re
 
         <div className={elem`content`}>
           {collapsed ? folderIcon : folderOpenIcon}
-          <p className={elem`text`}>
+          <p className={elem`name`}>
             {content.name}
           </p>
         </div>

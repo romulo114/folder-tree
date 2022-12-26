@@ -23,7 +23,7 @@ $ROOT: functions.makeRoot('folder');
     gap: 8px;
   }
 
-  & #{el('text')} {
+  & #{el('name')} {
     font-size: 1rem;
     margin: 4px 0;
   }

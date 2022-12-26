@@ -21,6 +21,7 @@ const elem = makeClassNameFactory(ROOT);
 export const FileNode = forwardRef<HTMLDivElement, FileNodeProps>((props, ref) => {
   const realProps = { ...DEFAULT_PROPS, ...props };
   const { className, icon, content } = realProps;
+
   return (
     <div className={clsx(ROOT, className)}>
       {icon}
