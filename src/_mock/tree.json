@@ -1,0 +1,53 @@
+{
+  "type": "folder",
+  "name": "root",
+  "path": "/",
+  "children": [
+    {
+      "type": "folder",
+      "name": "dev",
+      "path": "/dev",
+      "children": [
+        {
+          "type": "file",
+          "name": "tty",
+          "path": "/dev/tty"
+        },
+        {
+          "type": "file",
+          "name": "chardev",
+          "path": "/dev/chardev"
+        },
+        {
+          "type": "file",
+          "name": "sda",
+          "path": "/dev/sda"
+        }
+      ]
+    },
+    {
+      "type": "folder",
+      "name": "mnt",
+      "path": "/mnt",
+      "children": [
+        {
+          "type": "folder",
+          "name": "hdd0",
+          "path": "/mnt/hdd0",
+          "children": [
+            {
+              "type": "file",
+              "name": "0001.csv",
+              "path": "/mnt/hdd0/0001.csv"
+            },
+            {
+              "type": "file",
+              "name": "0002.csv",
+              "path": "/mnt/hdd0/0002.csv"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

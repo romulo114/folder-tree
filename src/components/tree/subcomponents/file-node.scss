@@ -1,0 +1,16 @@
+@use '../../../assets/styles/base/functions';
+
+$ROOT: functions.makeRoot('file');
+@function el($name) {
+  @return functions.makeSubElementName($ROOT, $name);
+}
+
+#{$ROOT} {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  & #{el('name')} {
+    margin: 4px 0;
+  }
+}
