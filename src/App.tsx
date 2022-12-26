@@ -1,9 +1,11 @@
+import { SvgIcon } from 'components';
+import { ReactComponent as Content } from 'assets/icons/chevron-down.svg';
 import './App.scss';
 
 function App() {
   return (
     <div className="App">
-      This is a typescript react v18 project
+      <SvgIcon content={<Content />} />
     </div>
   );
 }
