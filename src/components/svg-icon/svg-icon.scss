@@ -1,0 +1,20 @@
+@use '../../assets/styles/base/functions';
+
+$ROOT: functions.makeRoot('svgIcon');
+
+#{$ROOT} {
+  &.size-small {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  &.size-medium {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  &.size-large {
+    width: 2rem;
+    height: 2rem;
+  }
+}
