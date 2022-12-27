@@ -1,11 +1,14 @@
-import { SvgIcon } from 'components';
-import { ReactComponent as Content } from 'assets/icons/chevron-down.svg';
+import { Tree } from 'components';
+import { consolidateTree } from 'helpers';
+import { FileType } from 'types';
+import TreeData from '_mock/tree.json';
 import './App.scss';
 
 function App() {
+  const treeData = consolidateTree(TreeData as FileType);
   return (
     <div className="App">
-      <SvgIcon content={<Content />} />
+      <Tree content={treeData} />
     </div>
   );
 }

@@ -1,0 +1,44 @@
+@use '../../../assets/styles/base/functions';
+
+$ROOT: functions.makeRoot('folder');
+@function el($name) {
+  @return functions.makeSubElementName($ROOT, $name);
+}
+
+#{$ROOT} {
+  div.over > & {
+    background-color: #444;
+  }
+
+  & #{el('node')} {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  & #{el('icon')} {
+    display: flex;
+    align-items: center;
+  }
+
+  & #{el('content')} {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  & #{el('name')} {
+    font-size: 1rem;
+    margin: 4px 0;
+  }
+
+  & #{el('children')} {
+    margin: 0 4px;
+    padding-left: 4px;
+    border-left: 2px solid #333;
+
+    &.collapsed {
+      display: none;
+    }
+  }
+}

@@ -2,7 +2,7 @@ $PREFIX: my-;
 $ELEMENT_SEPARATOR: __;
 
 @function makeRoot($name) {
-  @return #{'.'}#{$PREFIX}#{$name};
+  @return #{'.'}#{$PREFIX}#{$name}-root;
 }
 
 @function makeSubElementName($root, $name) {

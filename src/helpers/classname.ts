@@ -2,7 +2,7 @@ const PREFIX = 'my-';
 const ELEMENT_SEPARATOR = '__';
 
 export const makeRootClassName = (name: string): string => {
-  return `${PREFIX}${name}`
+  return `${PREFIX}${name}-root`
 }
 
 export function makeClassNameFactory(root: string) {
