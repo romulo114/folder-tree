@@ -38,25 +38,18 @@ export const FolderNode = (props: FolderNodeProps) => {
 
   const handleToggle = () => setCollapsed(prev => !prev);
 
-  const icon = (
-    <div className={elem`icon`} onClick={handleToggle}>
-      <SvgIcon content={collapsed ? <ChevronRight /> : <ChevronDown />} />
-    </div>
-  );
-  const body = (
-    <div className={elem`content`}>
-      {collapsed ? folderIcon : folderOpenIcon}
-      <p className={elem`name`}>
-        {content.name}
-      </p>
-    </div>
-  );
-
   const header = (
     <div className={elem`node`}>
-      {icon}
+      <div className={elem`icon`} onClick={handleToggle}>
+        <SvgIcon content={collapsed ? <ChevronRight /> : <ChevronDown />} />
+      </div>
 
-      {body}
+      <div className={elem`content`}>
+        {collapsed ? folderIcon : folderOpenIcon}
+        <p className={elem`name`}>
+          {content.name}
+        </p>
+      </div>
     </div>
   );
 
@@ -69,7 +62,7 @@ export const FolderNode = (props: FolderNodeProps) => {
           </Draggable>
         )}
 
-        <ul className={clsx(elem`children`, { 'collapsed': collapsed })}>
+        <ul className={clsx(elem`children`, { collapsed })}>
           {content.children?.map(child => child.type === 'file' ? (
             <FileNode key={child.path} content={child} />
           ) : (

@@ -10,10 +10,6 @@ $ROOT: functions.makeRoot('file');
   align-items: center;
   gap: 8px;
 
-  &.dragging {
-    cursor: move;
-  }
-
   & #{el('name')} {
     margin: 4px 0;
   }

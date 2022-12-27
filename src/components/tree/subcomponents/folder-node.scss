@@ -35,7 +35,7 @@ $ROOT: functions.makeRoot('folder');
   & #{el('children')} {
     margin: 0 4px;
     padding-left: 4px;
-    border-left: 2px solid #333;
+    border-left: 1px solid #666;
 
     &.collapsed {
       display: none;

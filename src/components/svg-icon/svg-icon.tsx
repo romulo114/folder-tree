@@ -23,6 +23,7 @@ const DEFAULT_PROPS = {
 export const SvgIcon = forwardRef<SVGSVGElement, SvgIconProps>((props, ref) => {
   const realProps = { ...DEFAULT_PROPS, ...props };
   const { size, content, viewBoxWidth, viewBoxHeight, className } = realProps;
+
   return cloneElement(content, {
     ref,
     className: clsx(`${ROOT} size-${size}`, className),
