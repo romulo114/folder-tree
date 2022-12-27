@@ -1,19 +1,23 @@
-import { forwardRef, ReactElement, useState } from 'react';
+import { ReactElement, useState } from 'react';
 import clsx from 'clsx';
-import { makeClassNameFactory, makeRootClassName } from 'helpers';
+import { Draggable, Droppable } from '../../dnd';
+import { SvgIcon } from '../../svg-icon';
 import { StyleProps, FileType } from 'types';
-import { SvgIcon } from 'components/svg-icon';
+import { makeClassNameFactory, makeRootClassName, disableDrop } from 'helpers';
 import { ChevronRight, ChevronDown, FolderOpen, Folder } from 'assets/icons';
 import { FileNode } from './file-node';
 import './folder-node.scss';
 
 export type FolderNodeProps = StyleProps & {
   content: FileType;
+  root?: boolean;
+
   folderOpenIcon?: ReactElement<FolderNodeProps['content']>;
   folderIcon?: ReactElement<FolderNodeProps['content']>;
 };
 
 const DEFAULT_PROPS = {
+  root: false,
   folderOpenIcon: <SvgIcon content={<FolderOpen />} />,
   folderIcon: <SvgIcon content={<Folder />} />
 };
@@ -21,38 +25,58 @@ const DEFAULT_PROPS = {
 const ROOT = makeRootClassName('folder');
 const elem = makeClassNameFactory(ROOT);
 
-export const FolderNode = forwardRef<HTMLDivElement, FolderNodeProps>((props, ref) => {
+export const FolderNode = (props: FolderNodeProps) => {
   const realProps = { ...DEFAULT_PROPS, ...props };
-  const { content, className, folderOpenIcon, folderIcon } = realProps;
-
-  const [collapsed, setCollapsed] = useState(false);
+  const {
+    content,
+    className,
+    root,
+    folderOpenIcon,
+    folderIcon
+  } = realProps;
+  const [collapsed, setCollapsed] = useState(true);
 
   const handleToggle = () => setCollapsed(prev => !prev);
 
-  return (
-    <div className={clsx(ROOT, className)} ref={ref}>
-      <div className={elem`node`}>
-        <div className={elem`icon`} onClick={handleToggle}>
-          <SvgIcon
-            content={collapsed ? <ChevronRight /> : <ChevronDown />}
-          />
-        </div>
-
-        <div className={elem`content`}>
-          {collapsed ? folderIcon : folderOpenIcon}
-          <p className={elem`name`}>
-            {content.name}
-          </p>
-        </div>
-      </div>
-
-      <ul className={clsx(elem`children`, { 'collapsed': collapsed })}>
-        {content.children?.map(child => child.type === 'file' ? (
-          <FileNode key={child.path} content={child} />
-        ) : (
-          <FolderNode key={child.path} content={child} />
-        ))}
-      </ul>
+  const icon = (
+    <div className={elem`icon`} onClick={handleToggle}>
+      <SvgIcon content={collapsed ? <ChevronRight /> : <ChevronDown />} />
     </div>
-  )
-});
+  );
+  const body = (
+    <div className={elem`content`}>
+      {collapsed ? folderIcon : folderOpenIcon}
+      <p className={elem`name`}>
+        {content.name}
+      </p>
+    </div>
+  );
+
+  const header = (
+    <div className={elem`node`}>
+      {icon}
+
+      {body}
+    </div>
+  );
+
+  return (
+    <Droppable id={content.path} disableDrop={disableDrop}>
+      <div className={clsx(ROOT, className)}>
+        {root ? header : (
+          <Draggable<FileType> id={content.path} data={content}>
+            {header}
+          </Draggable>
+        )}
+
+        <ul className={clsx(elem`children`, { 'collapsed': collapsed })}>
+          {content.children?.map(child => child.type === 'file' ? (
+            <FileNode key={child.path} content={child} />
+          ) : (
+            <FolderNode key={child.path} content={child} />
+          ))}
+        </ul>
+      </div>
+    </Droppable>
+  );
+};

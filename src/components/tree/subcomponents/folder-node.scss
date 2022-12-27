@@ -6,6 +6,10 @@ $ROOT: functions.makeRoot('folder');
 }
 
 #{$ROOT} {
+  div.over > & {
+    background-color: #444;
+  }
+
   & #{el('node')} {
     display: flex;
     align-items: center;

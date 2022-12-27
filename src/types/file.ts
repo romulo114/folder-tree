@@ -5,6 +5,7 @@ export type FileBaseType = {
 
 export type FileType = FileBaseType & {
   type: 'file' | 'folder';
+  parent: string | null;
 
   // For file nodes
   size?: number;
