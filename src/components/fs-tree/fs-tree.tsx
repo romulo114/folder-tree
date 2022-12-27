@@ -9,7 +9,7 @@ import {
   useSensors
 } from '@dnd-kit/core';
 import { FileType, StyleProps } from 'types';
-import { disableDrop, makeRootClassName, moveNode } from 'helpers';
+import { consolidateTree, disableDrop, makeRootClassName, moveNode } from 'helpers';
 import { FolderNode } from './subcomponents';
 import './fs-tree.scss';
 
@@ -28,7 +28,7 @@ export const FSTree = forwardRef<HTMLDivElement, FSTreeProps>((props, ref) => {
   const realProps = { ...DEFAULT_PROPS, ...props };
   const { className, content, size } = realProps;
 
-  const [data, setData] = useState(content);
+  const [data, setData] = useState(consolidateTree(content));
 
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
