@@ -1,4 +1,4 @@
-import { Tree } from 'components';
+import { FSTree } from 'components';
 import { consolidateTree } from 'helpers';
 import { FileType } from 'types';
 import TreeData from '_mock/tree.json';
@@ -8,7 +8,7 @@ function App() {
   const treeData = consolidateTree(TreeData as FileType);
   return (
     <div className="App">
-      <Tree content={treeData} />
+      <FSTree content={treeData} />
     </div>
   );
 }

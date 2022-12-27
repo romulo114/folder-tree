@@ -43,7 +43,5 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "@storybook/react": "^6.5.15"
-  }
+  "devDependencies": {}
 }

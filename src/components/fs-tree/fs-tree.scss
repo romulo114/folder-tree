@@ -1,6 +1,6 @@
 @use '../../assets/styles/base/functions';
 
-$ROOT: functions.makeRoot('tree');
+$ROOT: functions.makeRoot('fs-tree');
 @function el($name) {
   @return functions.makeSubElementName($ROOT, $name);
 }

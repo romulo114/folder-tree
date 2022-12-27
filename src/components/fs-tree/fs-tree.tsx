@@ -11,9 +11,9 @@ import {
 import { FileType, StyleProps } from 'types';
 import { disableDrop, makeRootClassName, moveNode } from 'helpers';
 import { FolderNode } from './subcomponents';
-import './tree.scss';
+import './fs-tree.scss';
 
-export type TreeProps = StyleProps & {
+export type FSTreeProps = StyleProps & {
   content: FileType;
   size?: 'narrow' | 'normal' | 'wide';
 }
@@ -22,9 +22,9 @@ const DEFAULT_PROPS = {
   size: 'normal'
 }
 
-const ROOT = makeRootClassName('tree');
+const ROOT = makeRootClassName('fs-tree');
 
-export const Tree = forwardRef<HTMLDivElement, TreeProps>((props, ref) => {
+export const FSTree = forwardRef<HTMLDivElement, FSTreeProps>((props, ref) => {
   const realProps = { ...DEFAULT_PROPS, ...props };
   const { className, content, size } = realProps;
 
